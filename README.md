@@ -8,8 +8,7 @@ This code builds and trains a feedforward neural network in PyTorch for a regres
 
 
 ## Neural Network Model
-<img width="743" height="623" alt="image" src="https://github.com/user-attachments/assets/c91c53e2-abfc-4adf-a2b0-072e26f9ecaa" />
-
+<img width="1322" height="863" alt="image" src="https://github.com/user-attachments/assets/5d355b46-e926-41f9-8363-0f3cecf66b53" />
 
 ## DESIGN STEPS
 ### STEP 1: 
@@ -94,36 +93,38 @@ class NeuralNet(nn.Module):
         return x
 
 # Initialize the Model, Loss Function, and Optimizer
-ai_brain = NeuralNet()
+jisha = NeuralNet()
 criterion = nn.MSELoss()
-optimizer = optim.RMSprop(ai_brain.parameters(), lr=0.001)
+optimizer = optim.RMSprop(jisha.parameters(), lr=0.001)
 
 # Name: JISHA BOSSNE SJ
 # Register Number: 212224230106
-def train_model(ai_brain, X_train, y_train, criterion, optimizer, epochs=2000):
+def train_model(jisha, X_train, y_train, criterion, optimizer, epochs=2000):
     for epoch in range(epochs):
         optimizer.zero_grad()
-        loss = criterion(ai_brain(X_train), y_train)
+        loss = criterion(jisha(X_train), y_train)
         loss.backward()
         optimizer.step()
 
 
         # Append loss inside the loop
-        ai_brain.history['loss'].append(loss.item())
+        jisha.history['loss'].append(loss.item())
 
         if epoch % 200 == 0:
             print(f'Epoch [{epoch}/{epochs}], Loss: {loss.item():.6f}')
 
 
-train_model(ai_brain, X_train_tensor, y_train_tensor, criterion, optimizer)
+train_model(jisha, X_train_tensor, y_train_tensor, criterion, optimizer)
 
 with torch.no_grad():
-    test_loss = criterion(ai_brain(X_test_tensor), y_test_tensor)
+    test_loss = criterion(jisha(X_test_tensor), y_test_tensor)
     print(f'Test Loss: {test_loss.item():.6f}')
 
-loss_df = pd.DataFrame(ai_brain.history)
+loss_df = pd.DataFrame(jisha.history)
 
 import matplotlib.pyplot as plt
+print("\nName:JISHA BOSSNE SJ")
+print("Register Number:212224230106")
 loss_df.plot()
 plt.xlabel("Epochs")
 plt.ylabel("Loss")
@@ -131,8 +132,11 @@ plt.title("Loss during Training")
 plt.show()
 
 X_n1_1 = torch.tensor([[9]], dtype=torch.float32)
-prediction = ai_brain(torch.tensor(scaler.transform(X_n1_1), dtype=torch.float32)).item()
+prediction = jisha(torch.tensor(scaler.transform(X_n1_1), dtype=torch.float32)).item()
+print("Name:JISHA BOSSNE SJ")
+print("Register Number:212224230106")
 print(f'Prediction: {prediction}')
+
 
 ```
 
@@ -141,16 +145,15 @@ print(f'Prediction: {prediction}')
 
 
 ### OUTPUT
-<img width="440" height="241" alt="image" src="https://github.com/user-attachments/assets/71b20152-a393-4c64-bdba-210499f216e4" />
+<img width="705" height="353" alt="image" src="https://github.com/user-attachments/assets/610648bc-4762-4f8c-960d-ef8e247c8fad" />
 
 
 ### Training Loss Vs Iteration Plot
-<img width="571" height="455" alt="image" src="https://github.com/user-attachments/assets/6f172f01-21c1-460e-ad91-b419796900e4" />
+<img width="941" height="682" alt="image" src="https://github.com/user-attachments/assets/f09304a7-52ab-4259-b863-dbb7643c3e8e" />
 
 
 ### New Sample Data Prediction
-<img width="297" height="41" alt="image" src="https://github.com/user-attachments/assets/83e6694d-d56a-4420-a1d7-7678bd9c73ed" />
-
+<img width="977" height="103" alt="image" src="https://github.com/user-attachments/assets/20db497a-2835-425a-8489-ae29b9c364b3" />
 
 
 ## RESULT
